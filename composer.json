@@ -1,0 +1,22 @@
+{
+    "name": "pppu/private-post-per-user",
+    "license": "GPL-3.0-or-later",
+    "description": "Gutenberg boilerplate",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Tomasz Hofdun",
+            "email": "tomaszhofdun@gmail.com"
+        }
+    ],
+    "config": {
+        "secure-http": false,
+        "optimize-autoloader": true,
+        "platform": {
+            "php": "8.0"
+        }
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.4"
+    }
+}
