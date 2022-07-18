@@ -11,7 +11,7 @@ const outputPath = 'App/assets/dist'
 const localDomain = 'http://szafirek.local'
 const entryPoints = {
     'scripts': jsPath + '/pppu.js',
-    'style': cssPath + '/styles.scss'
+    'styles': cssPath + '/styles.scss'
 }
 
 module.exports = {
