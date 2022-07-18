@@ -7,7 +7,7 @@ namespace PPPU;
 use PPPU\Services\ActionsLoader;
 use PPPU\Services\FilterLoader;
 
-if (!defined('ABSPATH')) {
+if (!\defined('ABSPATH')) {
     exit;
 }
 
@@ -27,13 +27,9 @@ final class App
     }
 }
 
-
 // TODO
-// jeśli user nie jest zalogowany to usunąć przyciks 'mój profil'
-
+// jeśli user nie jest zalogowany to usunąć przyciks 'mój profil' -> done
 
 // Deploy
 // todo
-// usunąć microtime()
-// usunąć __log
 // ShortcodeLoader <-tbr

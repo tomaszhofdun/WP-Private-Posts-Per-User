@@ -1,4 +1,4 @@
-jQuery(".pppu-tabs .nav a").click(function (e) {
+jQuery('.pppu-tabs .nav a').click(function (e) {
   e.preventDefault();
-  $(this).tab("show");
+  jQuery(this).tab('show');
 });

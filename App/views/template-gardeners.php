@@ -1,7 +1,7 @@
-<?php
-get_header();
+<?php declare(strict_types=1);
+\get_header();
 
-$user = wp_get_current_user();
+$user = \wp_get_current_user();
 $display_name = $user->display_name;
 $user_email = $user->user_email;
 ?>
@@ -15,20 +15,15 @@ $user_email = $user->user_email;
 
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="home">
-            <?php
-            // the_content();  
-            ?>
-            <p>Witaj <?php echo $display_name ?></p>
-            <p>Twój email: <?php echo $user_email ?></p>
-            <!-- <p>Zarejestrowany dnia: </p> -->
+            <p>Witaj <?= $display_name; ?></p>
+            <p>Twój email: <?= $user_email; ?></p>
         </div>
-
         <div role="tabpanel" class="tab-pane bg-danger" id="fees">
-            <?php the_field('oplaty') ?>
+            <?php \the_field('oplaty'); ?>
         </div>
         <div role="tabpanel" class="tab-pane" id="messages">
-            <?php the_field('wiadomosci') ?>
+            <?php \the_field('wiadomosci'); ?>
         </div>
     </div>
 </div>
-<?php get_footer(); ?>
+<?php \get_footer(); ?>

@@ -22,16 +22,15 @@ trait Singleton
     /**
      * @throws Exception
      */
-    public function __wakeup()
+    public function __wakeup(): void
     {
-        throw new Exception("Cannot unserialize singleton");
+        throw new Exception('Cannot unserialize singleton');
     }
 
     public static function instance()
     {
-
-        $called_class = get_called_class();
-        if (self::$instance === null) {
+        $called_class = \get_called_class();
+        if (null === self::$instance) {
             self::$instance = new $called_class();
         }
 
