@@ -6,10 +6,9 @@ namespace PPPU\Services;
 
 use PPPU\Singleton;
 
-if (!defined('ABSPATH')) {
+if (!\defined('ABSPATH')) {
     exit;
 }
-
 
 class ActionsLoader
 {
@@ -17,94 +16,170 @@ class ActionsLoader
 
     private function __construct()
     {
-        add_action('wp_enqueue_scripts', array($this, 'pppu_main_scripts'));
-        add_action('wp_loaded', array($this, 'pppu_no_subs_admin_bar'));
-        add_action('plugins_loaded', array($this, 'loadTextDomain'));
-        add_action('admin_init', array($this, 'pppu_redirect_subs_to_frontend'));
-
-        // add_action('init', 'cptui_create_custom_post_types', 10); // Leave on standard init for legacy purposes.
-
-        // add_action('activate_' . plugin_basename(__FILE__), 'pppu_add_my_profile_page');
-
-        add_action('init', array($this, 'register_post_types'));
-        // add_shortcode( 'bartag', 'bartag_func' );
-        // add_action('after_setup_theme', array($this, 'register_primary_menu'));
+        $this->includes();
+        \add_action('wp_enqueue_scripts', [$this, 'pppu_main_scripts']);
+        \add_action('plugins_loaded', [$this, 'loadTextDomain']);
+        \add_action('init', [$this, 'register_post_types']);
+        \add_action('init', [$this, 'register_custom_field']);
     }
 
+    private function includes(): void
+    {
+        // Include the ACF plugin.
+        include_once MY_ACF_PATH . 'acf.php';
+        include_once MY_ACFE_PATH . 'acf-extended.php';
+    }
 
+    public function pppu_main_scripts(): void
+    {
+        \wp_enqueue_style('pppu_styles', PPPU_PLUGIN_APP_URL . 'assets/dist/styles.css');
+    }
 
-
-    // public function pppu_add_my_profile_page()
-    // {
-    //     $my_post = array(
-    //         'post_title'    => 'Mój profil',
-    //         'post_content'  => 'profil - działkowiec-page',
-    //         'post_status'   => 'publish',
-    //         'post_author'   => 1,
-    //         'post_type' => 'page'
-    //     );
-
-    //     // Insert the post into the database.
-    //     wp_insert_post($my_post);
-    // }
-
-    // public function register_primary_menu()
-    // {
-    //     register_nav_menu('pppu_menu', __('PPPU_Menu', PPPU_APP_TEXT_DOMAIN));
-    // }
-
-    public function register_post_types()
+    public function register_post_types(): void
     {
         // Gardeners Post Type
-        register_post_type('gardeners', array(
+        \register_post_type('gardeners', [
             'capability_type' => 'gardeners',
             'map_meta_cap' => true,
             // 'show_in_rest' => false,
             // 'show_ui' => true,
             // 'show_in_menu' => true,
             // 'show_in_nav_menus' => true,
-            'supports' => array('title'),
-            'rewrite' => array('slug' => 'dzialkowcy'),
+            'supports' => ['title'],
+            'rewrite' => ['slug' => 'dzialkowcy'],
             'has_archive' => true,
             'public' => true,
-            'labels' => array(
+            'labels' => [
                 'name' => 'Działkowcy',
                 'add_new_item' => 'Dodaj nowego działkowca',
                 'edit_item' => 'Edutuj działkowca',
                 'all_items' => 'Wszyscy działkowcy',
-                'singular_name' => 'Działkowiec'
-            ),
-            'menu_icon' => 'dashicons-groups'
-        ));
+                'singular_name' => 'Działkowiec',
+            ],
+            'menu_icon' => 'dashicons-groups',
+        ]);
     }
 
-    public function pppu_main_scripts()
+    public function register_custom_field(): void
     {
-        // wp_enqueue_script('traffit-form-integrator-style', 'https://cdnjs.cloudflare.com/ajax/libs/axios/0.25.0/axios.min.js');
-        wp_enqueue_style('pppu_styles', PPPU_PLUGIN_URL . 'assets/styles/styles.css');
-    }
+        if (\function_exists('acf_add_local_field_group')) {
+            \acf_add_local_field_group([
+                'key' => 'group_1',
+                'title' => 'Zakładki',
+                'fields' => [
+                    [
+                        'key' => 'oplaty',
+                        'label' => 'Opłaty',
+                        'name' => 'Opłaty',
+                        'type' => 'wysiwyg',
+                        'prefix' => '',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => [
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ],
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'maxlength' => '',
+                        'readonly' => 0,
+                        'disabled' => 0,
+                    ],
+                    [
+                        'key' => 'wiadomosci',
+                        'label' => 'Wiadomości',
+                        'name' => 'wiadomosci',
+                        'type' => 'wysiwyg',
+                        'prefix' => '',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => [
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ],
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'maxlength' => '',
+                        'readonly' => 0,
+                        'disabled' => 0,
+                    ],
+                ],
+                'location' => [
+                    [
+                        [
+                            'param' => 'post_type',
+                            'operator' => '==',
+                            'value' => 'gardeners',
+                        ],
+                    ],
+                ],
+                'menu_order' => 0,
+                'position' => 'normal',
+                'style' => 'default',
+                'label_placement' => 'top',
+                'instruction_placement' => 'label',
+                'hide_on_screen' => '',
+            ]);
 
-    public function pppu_no_subs_admin_bar()
-    {
-        $ourCurrentUser = wp_get_current_user();
-
-        if (count($ourCurrentUser->roles) == 1 and $ourCurrentUser->roles[0] == 'subscriber') {
-            show_admin_bar(false);
+            \acf_add_local_field_group([
+                'key' => 'group_2',
+                'title' => 'Ta strona będzie widoczna tylko dla tego użytkownika',
+                'fields' => [
+                    [
+                        'key' => 'users',
+                        'label' => 'Nazwa użytkownika',
+                        'name' => 'Nazwa użytkownika',
+                        'type' => 'user',
+                        'prefix' => '',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => [
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ],
+                        'role' => ['subscriber'],
+                        'multiple' => 1,
+                        'return_format' => 'id',
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'maxlength' => '',
+                        'readonly' => 0,
+                        'disabled' => 0,
+                    ],
+                ],
+                'location' => [
+                    [
+                        [
+                            'param' => 'post_type',
+                            'operator' => '==',
+                            'value' => 'gardeners',
+                        ],
+                    ],
+                ],
+                'menu_order' => 0,
+                'position' => 'normal',
+                'style' => 'default',
+                'label_placement' => 'top',
+                'instruction_placement' => 'label',
+                'hide_on_screen' => '',
+            ]);
         }
     }
 
-    function pppu_redirect_subs_to_frontend()
+    public function loadTextDomain(): void
     {
-        $ourCurrentUser = wp_get_current_user();
-
-        if (count($ourCurrentUser->roles) == 1 and $ourCurrentUser->roles[0] == 'subscriber') {
-            wp_redirect(site_url('/'));
-            exit;
-        }
-    }
-
-    public function loadTextDomain()
-    {
-        load_plugin_textdomain('pppu', false);
+        \load_plugin_textdomain('pppu', false);
     }
 }
