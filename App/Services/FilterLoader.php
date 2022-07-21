@@ -54,8 +54,6 @@ class FilterLoader
     public function pppu_check_privileges($template)
     {
         if (\is_singular('gardeners')) {
-            \wp_enqueue_script('gardenersjs', PPPU_PLUGIN_APP_URL . '/assets/dist/scripts.js', ['jquery'], \microtime(), true);
-            \wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css', [], \microtime());
 
             /**  Add some id's manually if you want from php code. */
             $manual_set_users_ids = [];

@@ -1,3 +1,9 @@
-.pppu-tabs .tab-pane {
-  padding: 20px;
+.pppu-tabs {
+    width: 80%;
+    background: white;
+    padding: 30px;
+    margin: 15px auto;
+    .tab-pane {
+        padding: 20px;
+      }
 }

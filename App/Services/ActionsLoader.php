@@ -19,8 +19,8 @@ class ActionsLoader
         $this->includes();
         \add_action('wp_enqueue_scripts', [$this, 'pppu_main_scripts']);
         \add_action('plugins_loaded', [$this, 'loadTextDomain']);
-        \add_action('init', [$this, 'register_post_types']);
-        \add_action('init', [$this, 'register_custom_field']);
+        \add_action('init', [$this, 'register_my_post_type'], 1);
+        \add_action('init', [$this, 'register_custom_field'], 2);
     }
 
     private function includes(): void
@@ -32,10 +32,16 @@ class ActionsLoader
 
     public function pppu_main_scripts(): void
     {
-        \wp_enqueue_style('pppu_styles', PPPU_PLUGIN_APP_URL . 'assets/dist/styles.css');
+        wp_enqueue_style('pppu-fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css', null, '4.4.0');
+        \wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@3.3.6/dist/css/bootstrap.min.css', null, '3.3.6');
+        \wp_enqueue_style('pppu_styles', PPPU_PLUGIN_APP_URL . 'assets/dist/styles.css', null, '1.0.0' );
+
+        wp_enqueue_script('jQuery2', 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js', null, null, true);
+        \wp_enqueue_script('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@3.3.6/dist/js/bootstrap.min.js', ['jQuery2'], '3.3.6', true);
+        \wp_enqueue_script('gardenersjs', PPPU_PLUGIN_APP_URL . '/assets/dist/scripts.js', ['bootstrap'], '1.0.0', true);
     }
 
-    public function register_post_types(): void
+    public function register_my_post_type(): void
     {
         // Gardeners Post Type
         \register_post_type('gardeners', [
@@ -131,7 +137,7 @@ class ActionsLoader
 
             \acf_add_local_field_group([
                 'key' => 'group_2',
-                'title' => 'Ta strona będzie widoczna tylko dla tego użytkownika',
+                'title' => __('This page will be only visible for these users','private-posts-per-user' ),
                 'fields' => [
                     [
                         'key' => 'users',
@@ -169,7 +175,7 @@ class ActionsLoader
                     ],
                 ],
                 'menu_order' => 0,
-                'position' => 'normal',
+                'position' => 'side',
                 'style' => 'default',
                 'label_placement' => 'top',
                 'instruction_placement' => 'label',
@@ -180,6 +186,6 @@ class ActionsLoader
 
     public function loadTextDomain(): void
     {
-        \load_plugin_textdomain('pppu', false);
+        \load_plugin_textdomain('private-posts-per-user', false,'private-posts-per-user/App/lang/');
     }
 }
