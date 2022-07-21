@@ -15,9 +15,9 @@ global $wpdb;
 \define('PPPU_APP_NAMESPACE', 'PPPU');
 \define('PPPU_APP_NAME', 'Private Posts Per User');
 
-\define('PPPU_APP_CATALOG_NAME', \basename(\dirname(PPPU_PLUGIN_PATH))); // Private Posts Per User
-\define('PPPU_APP_TEXT_DOMAIN', PPPU_APP_CATALOG_NAME); // Private Posts Per User
-\define('PPPU_APP_MAIN_FILE', PPPU_APP_CATALOG_NAME . '.php');  // Private Posts Per User.php
+\define('PPPU_APP_CATALOG_NAME', \basename(\dirname(PPPU_PLUGIN_PATH))); // private-posts-per-user
+\define('PPPU_APP_TEXT_DOMAIN', PPPU_APP_CATALOG_NAME); // private-posts-per-user
+\define('PPPU_APP_MAIN_FILE', PPPU_APP_CATALOG_NAME . '.php');  // private-posts-per-user.php
 \define('PPPU_APP_MAIN_FILE_PATH', \dirname(PPPU_PLUGIN_PATH) . DIRECTORY_SEPARATOR . PPPU_APP_MAIN_FILE);
 
 // Define path and URL to the ACF plugin.

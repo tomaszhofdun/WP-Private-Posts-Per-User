@@ -2,13 +2,12 @@
 
 /**
  * Plugin Name: Private Posts Per User
- * Description: Plugin który pozwala na tworzenie stron widocznych tylko dla pojedynczego użytkownika.
+ * Description: The plugin allows to create a single page that is only visible to a specific user
  * Version: 1.0
- * Author: Tomasz hofdun
+ * Author: Tomasz Hofdun
  * License: GPL2
- * Text Domain: pppu
- * Tested up to: 6.0.0
- * Class name PPPU.
+ * Text Domain: private-posts-per-user
+ * Domain Path: /App/lang
  */
 
 declare(strict_types=1);
@@ -19,7 +18,6 @@ if (!\defined('ABSPATH')) {
     exit;
 }
 
-require_once 'Dev/log.php';
 require_once 'App/config.php';
 require_once 'App/bootstrap.php';
 

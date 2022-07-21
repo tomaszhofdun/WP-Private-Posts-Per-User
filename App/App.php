@@ -26,10 +26,3 @@ final class App
         FilterLoader::instance();
     }
 }
-
-// TODO
-// jeśli user nie jest zalogowany to usunąć przyciks 'mój profil' -> done
-
-// Deploy
-// todo
-// ShortcodeLoader <-tbr

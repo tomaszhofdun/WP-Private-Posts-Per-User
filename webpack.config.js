@@ -10,7 +10,7 @@ const cssPath = './App/assets/styles'
 const outputPath = 'App/assets/dist'
 const localDomain = 'http://szafirek.local'
 const entryPoints = {
-    'scripts': jsPath + '/pppu.js',
+    'scripts': jsPath + '/scripts.js',
     'styles': cssPath + '/styles.scss'
 }
 
