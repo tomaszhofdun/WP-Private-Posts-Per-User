@@ -45,7 +45,7 @@ class ActionsLoader
     {
         // Gardeners Post Type
         \register_post_type('gardeners', [
-            'capability_type' => 'gardeners',
+            'capability_type' => 'post',
             'map_meta_cap' => true,
             // 'show_in_rest' => false,
             // 'show_ui' => true,
