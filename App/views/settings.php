@@ -16,6 +16,7 @@
                     <div class="row mx-auto">
                         <div class=" col-12  mx-auto">
                             <form class="pppu_my_form" action="<?= $create_users_with_pages_url; ?>" method="POST" >
+                                <input name="pppu_prefix_username_pagename-checkbox" id="pppu_prefix_username_pagename-checkbox" type="checkbox" ><label for="pppu_prefix_username_pagename-checkbox" ><?php _e('Use prefix ?', 'private-posts-per-user'); ?></label>
                                 <div class="mb-3">
                                     <input name="pppu_prefix_username_pagename" id="pppu_prefix_username_pagename" type="text" placeholder="<?php _e('User name prefix', 'private-posts-per-user'); ?>"><label for="pppu_prefix_username_pagename" style="margin-left:5%;"><?php _e('User name will be followed by the numbers ex. "name" will be replaced with name1, name2, name3 etc.', 'private-posts-per-user'); ?></label>
                                 </div>
@@ -23,7 +24,7 @@
                                     <input name="pppu_number_of_users" id="pppu_number_of_users" type="number" value=1 placeholder="<?php _e('Number of users', 'private-posts-per-user'); ?>"><label for="pppu_number_of_users" style="margin-left:5%;"><?php _e('How many users will be created', 'private-posts-per-user'); ?></label>
                                 </div>
                                 <div class="mb-3">
-                                    <?php // Get post types
+                                    <?php
                                     $args = ['public' => true];
                                     $post_types = \get_post_types($args, 'objects'); ?>
                                     <select name="pppu_post_type" id="pppu_post_type">

@@ -19,18 +19,30 @@
     }
 
     $prefix_user_name = $_POST['pppu_prefix_username_pagename'];
+    $prefix_user_name_checkbox = $_POST['pppu_prefix_username_pagename-checkbox'] ?? false;
     $number_of_users = $_POST['pppu_number_of_users'];
 
     $users_table = [];
     $individual_pages = [];
 
-    for ($i = 1; $i <= $number_of_users; $i++) {
-        $new_user = \pppu_register_new_user($prefix_user_name, $i);
+    if($prefix_user_name_checkbox) {
+        for ($i = 1; $i <= $number_of_users; $i++) {
+            $new_user = \pppu_register_new_user($prefix_user_name, $i);
+    
+            if (!empty($new_user)) {
+                $users_table[] = $new_user;
+            }
+        }
+    }
+    else {
+        $new_user = \pppu_register_new_user($prefix_user_name);
 
         if (!empty($new_user)) {
             $users_table[] = $new_user;
         }
     }
+
+    
 
     if (empty($users_table)) {
         \error_message(__('Looks like none of the users were registered, Please make sure you have provided unique usernames', 'private-posts-per-user'));
@@ -58,7 +70,7 @@
         \wp_insert_post($post_arr);
     }
 
-    function pppu_register_new_user($prefix_user_name, $i)
+    function pppu_register_new_user($prefix_user_name, $i = "")
     {
         $user_name = $prefix_user_name . $i;
         $user_id = \username_exists($user_name);
