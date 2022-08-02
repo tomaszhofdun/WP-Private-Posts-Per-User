@@ -1,23 +1,124 @@
-# Copyright (C) 2022 private-posts-per-user
-# This file is distributed under the same license as the private-posts-per-user package.
+# Copyright (C) 2022 Tomasz Hofdun
+# This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: private-posts-per-user\n"
+"Project-Id-Version: Private Posts Per User 1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/private-posts-per-user\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-07-20 21:22+0000\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: *.js\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"POT-Creation-Date: 2022-08-02T22:01:01+02:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.6.0\n"
+"X-Domain: private-posts-per-user\n"
 
-#: App/Services/ActionsLoader.php:134
+#. Plugin Name of the plugin
+msgid "Private Posts Per User"
+msgstr ""
+
+#. Description of the plugin
+msgid "The plugin allows to create a single page that is only visible to a specific user"
+msgstr ""
+
+#. Author of the plugin
+msgid "Tomasz Hofdun"
+msgstr ""
+
+#: App/controllers/actions/create_users_with_pages.php:5
+#: App/controllers/actions/create_users_with_pages.php:12
+msgid "You are not allowed to access this page"
+msgstr ""
+
+#: App/controllers/actions/create_users_with_pages.php:18
+msgid "You must enter all required information"
+msgstr ""
+
+#: App/controllers/actions/create_users_with_pages.php:37
+msgid "Looks like none of the users were registered, Please make sure you have provided unique usernames"
+msgstr ""
+
+#: App/Services/ActionsLoader.php:82
+msgid "Tabs"
+msgstr ""
+
+#: App/Services/ActionsLoader.php:86
+#: App/Services/ActionsLoader.php:87
+msgid "Fees"
+msgstr ""
+
+#: App/Services/ActionsLoader.php:108
+#: App/Services/ActionsLoader.php:109
+#: App/views/template-gardeners.php:12
+msgid "Messages"
+msgstr ""
+
+#: App/Services/ActionsLoader.php:148
 msgid "This page will be only visible for these users"
+msgstr ""
+
+#: App/Services/ActionsLoader.php:152
+#: App/Services/ActionsLoader.php:153
+msgid "User name"
+msgstr ""
+
+#: App/Services/ActionsLoader.php:203
+msgid "Private Posts"
+msgstr ""
+
+#: App/views/created_users_table.php:9
+msgid "username"
+msgstr ""
+
+#: App/views/created_users_table.php:10
+msgid "password"
+msgstr ""
+
+#: App/views/navbar.php:10
+msgid "You can create up to 500 users with 500 individual page named exactly like username"
+msgstr ""
+
+#: App/views/navbar.php:14
+msgid "Settings"
+msgstr ""
+
+#: App/views/settings.php:15
+msgid "Create Users Form"
+msgstr ""
+
+#: App/views/settings.php:20
+msgid "User name prefix"
+msgstr ""
+
+#: App/views/settings.php:20
+msgid "User name will be followed by the numbers ex. \"name\" will be replaced with name1, name2, name3 etc."
+msgstr ""
+
+#: App/views/settings.php:23
+msgid "Number of users"
+msgstr ""
+
+#: App/views/settings.php:23
+msgid "How many users will be created"
+msgstr ""
+
+#: App/views/settings.php:41
+msgid "Save Settings"
 msgstr ""
 
 #: App/views/template-gardeners-404.php:4
 msgid "You don't have a permission to access this page"
+msgstr ""
+
+#: App/views/template-gardeners.php:10
+msgid "Profile"
+msgstr ""
+
+#: App/views/template-gardeners.php:11
+msgid "Fees for electricity"
+msgstr ""
+
+#: App/views/template-gardeners.php:17
+msgid "Hi,"
 msgstr ""
