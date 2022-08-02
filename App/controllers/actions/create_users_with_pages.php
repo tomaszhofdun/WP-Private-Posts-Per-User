@@ -13,7 +13,6 @@
         exit;
     }
 
-    // DO THE JOB, foreach i userów wszystkich dodać i stronki
     if (empty($_POST['pppu_prefix_username_pagename']) || empty($_POST['pppu_number_of_users']) || empty($_POST['pppu_post_type'])) {
         \error_message(__('You must enter all required information', 'private-posts-per-user'));
         exit;

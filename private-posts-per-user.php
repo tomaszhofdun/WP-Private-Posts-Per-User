@@ -18,6 +18,7 @@ if (!\defined('ABSPATH')) {
     exit;
 }
 
+// require_once 'Dev/log.php';
 require_once 'App/config.php';
 require_once 'App/bootstrap.php';
 
