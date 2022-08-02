@@ -18,6 +18,8 @@ class FilterLoader
     {
         \add_filter('template_include', [$this, 'pppu_redirectToUserPage'], 1);
         \add_filter('template_include', [$this, 'pppu_check_privileges'], 2);
+        \add_filter('acf/settings/show_admin', '__return_false');
+
     }
 
     /**
