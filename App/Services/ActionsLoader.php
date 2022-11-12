@@ -34,8 +34,12 @@ class ActionsLoader
 
     public function pppu_admin_main_scripts(): void
     {
-        \wp_enqueue_style('pppu-fontawesome', 'https://use.fontawesome.com/releases/v5.6.3/css/all.css', null, '5.6.3');
-        \wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css', null, '4.1.1');
+        $page = $_GET['page'];
+
+        if ( $page == 'pppu_settings' || $page == 'pppu_password_change' ) {
+            \wp_enqueue_style('pppu-fontawesome', 'https://use.fontawesome.com/releases/v5.6.3/css/all.css', null, '5.6.3');
+            \wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css', null, '4.1.1');
+        }
     }
 
     public function pppu_main_scripts(): void
@@ -201,6 +205,7 @@ class ActionsLoader
     {
         $menu_slug = 'pppu_settings';
         \add_menu_page('Private Posts', __('Private Posts', 'private-posts-per-user'), 'administrator', $menu_slug, [$this, 'pppu_controller'], 'dashicons-lock');
+        \add_menu_page('Password Change', __('Password Change', 'private-posts-per-user'), 'administrator', 'pppu_password_change', [$this, 'pppu_controller'], 'dashicons-lock');
     }
 
     public function pppu_controller(): void
