@@ -34,9 +34,14 @@ class ActionsLoader
 
     public function pppu_admin_main_scripts(): void
     {
-        $page = $_GET['page'];
 
-        if ( $page == 'pppu_settings' || $page == 'pppu_password_change' ) {
+        $page = '';
+
+        if (isset($_GET['page'])) {
+            $page = $_GET['page'];
+        }
+
+        if ($page == 'pppu_settings' || $page == 'pppu_password_change') {
             \wp_enqueue_style('pppu-fontawesome', 'https://use.fontawesome.com/releases/v5.6.3/css/all.css', null, '5.6.3');
             \wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css', null, '4.1.1');
         }
@@ -83,12 +88,12 @@ class ActionsLoader
         if (\function_exists('acf_add_local_field_group')) {
             \acf_add_local_field_group([
                 'key' => 'group_1',
-                'title' => __('Tabs','private-posts-per-user'),
+                'title' => __('Tabs', 'private-posts-per-user'),
                 'fields' => [
                     [
                         'key' => 'fees',
-                        'label' => __('Fees','private-posts-per-user'),
-                        'name' => __('Fees','private-posts-per-user'),
+                        'label' => __('Fees', 'private-posts-per-user'),
+                        'name' => __('Fees', 'private-posts-per-user'),
                         'type' => 'wysiwyg',
                         'prefix' => '',
                         'instructions' => '',
@@ -109,8 +114,8 @@ class ActionsLoader
                     ],
                     [
                         'key' => 'messages',
-                        'label' => __('Messages','private-posts-per-user'),
-                        'name' => __('Messages','private-posts-per-user'),
+                        'label' => __('Messages', 'private-posts-per-user'),
+                        'name' => __('Messages', 'private-posts-per-user'),
                         'type' => 'wysiwyg',
                         'prefix' => '',
                         'instructions' => '',
@@ -149,12 +154,12 @@ class ActionsLoader
 
             \acf_add_local_field_group([
                 'key' => 'group_2',
-                'title' => __('This page will be only visible for these users','private-posts-per-user'),
+                'title' => __('This page will be only visible for these users', 'private-posts-per-user'),
                 'fields' => [
                     [
                         'key' => 'users',
-                        'label' => __('User name','private-posts-per-user'),
-                        'name' => __('User name','private-posts-per-user'),
+                        'label' => __('User name', 'private-posts-per-user'),
+                        'name' => __('User name', 'private-posts-per-user'),
                         'type' => 'user',
                         'prefix' => '',
                         'instructions' => '',
@@ -198,7 +203,7 @@ class ActionsLoader
 
     public function loadTextDomain(): void
     {
-        \load_plugin_textdomain('private-posts-per-user', false,'private-posts-per-user/App/lang/');
+        \load_plugin_textdomain('private-posts-per-user', false, 'private-posts-per-user/App/lang/');
     }
 
     public function pppu_widget_menu(): void
