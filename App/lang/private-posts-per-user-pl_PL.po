@@ -33,7 +33,7 @@ msgstr "Nie masz odpowiednich uprawnień do tej strony"
 
 #: App/controllers/actions/create_users_with_pages.php:18
 msgid "You must enter all required information"
-msgstr "Nie masz odpowiednich uprawnień do tej strony"
+msgstr "Musisz uzupełnić wszystkie pola"
 
 #: App/controllers/actions/create_users_with_pages.php:37
 msgid "Looks like none of the users were registered, Please make sure you have provided unique usernames"

@@ -8,9 +8,6 @@ if (\current_user_can('administrator') && isset($_GET['action'])) {
     $action = \sanitize_text_field($_GET['action']);
 
     switch ($action) {
-        case 'create_users_with_pages':
-            include $actions . 'create_users_with_pages.php';
-            break;
         case 'change_users_password':
             include $actions . 'change_users_password.php';
             break;
@@ -19,4 +16,4 @@ if (\current_user_can('administrator') && isset($_GET['action'])) {
     return;
 }
 
-include PPPU_PLUGIN_PATH . 'views' . DIRECTORY_SEPARATOR . 'settings.php';
+include PPPU_PLUGIN_PATH . 'views' . DIRECTORY_SEPARATOR . 'change-users-password.php';

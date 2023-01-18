@@ -13,5 +13,8 @@ if (\current_user_can('administrator') && isset($_GET['page'])) {
         case 'pppu_settings':
             include $controller . 'pppu_settings.php';
             break;
+        case 'pppu_password_change':
+            include $controller . 'pppu_password_change.php';
+            break;
     }
 }
